@@ -1,20 +1,22 @@
 let express=require("express");
 let cors=require("cors");
 
-let app=express() //creates an object of server
+let app=express();
+
 app.use(cors());
-app.get("/ping",(request,response)=>{response.send("Please enter a number")});
+app.get("/ping",(req,res)=>res.send("Please Enter a Number"));
 app.get("/num",(req,res)=>{
 
-        let str=req.query.number;
-        let n=parseInt(str);
-        let fact=1;
-        for(let i=1;i<=n;i++)
-        {
-            fact=fact*i;
-        }
-        res.send(`Factorial=${fact}`);
+    let str=req.query.number;
+    let n=parseInt(str);
+    let fact=1;
+    for(let i=1;i<=n;i++)
+    {
+        fact=fact*i;
     }
-)
 
-app.listen(9000,()=>{console.log("Express is active");})
+    res.send(`factorial is ${fact}`);
+
+});
+
+app.listen(9000,()=>{console.log("express is ready")});
